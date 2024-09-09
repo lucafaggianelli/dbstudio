@@ -2,7 +2,7 @@
 
 DB Studio is a web-based database management tool that allows you to manage your databases, tables, and data. It is designed to be simple and easy to use, with a clean and intuitive user interface.
 
-DB Studio is currently compatible with FastAPI and SQLAlchemy or SQLModel.
+DB Studio is currently compatible with FastAPI, Starlette, SQLAlchemy and SQLModel.
 
 ```
 pip install dbstudio
