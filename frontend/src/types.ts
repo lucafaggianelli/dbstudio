@@ -27,7 +27,7 @@ export interface DBRelationship {
   targetTableId: string;
 }
 
-export interface Graph {
+export interface Schema {
   tables: DBTable[];
   relationships: DBRelationship[];
 }

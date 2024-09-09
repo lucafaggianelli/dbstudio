@@ -9,4 +9,9 @@ export default defineConfig({
   build: {
     outDir: path.resolve('..', 'src', 'dbstudio', 'static'),
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
 })
