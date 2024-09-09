@@ -1,0 +1,38 @@
+[project]
+name = "dbstudio"
+version = "0.1.0"
+authors = [{ name = "Luca Faggianelli", email = "luca@velvetlab.tech" }]
+description = "Web-based database management tool."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.9"
+keywords = [
+  "python",
+  "db",
+  "sqlalchemy",
+  "sqlmodel",
+  "web-ui",
+  "fastapi",
+  "starlette",
+  "pydantic",
+]
+license = { text = "MIT" }
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "black==23.10.1",
+  "coverage==7.3.2",
+  "fastapi>=0.70.0",
+  "flake8==6.1.0",
+  "pytest==7.4.3",
+  "pytest_asyncio==0.21.1",
+  "pytest-env==1.1.0",
+  "sqlalchemy>=1.4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+env = ["DATABASE_URL=sqlite:///:memory:"]
