@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 /src/dbstudio/static/*
+
+.DS_Store
