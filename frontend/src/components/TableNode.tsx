@@ -13,8 +13,8 @@ export type TableNodeType = Node<
 
 const TableNode: React.FC<NodeProps<TableNodeType>> = ({ data: { table } }) => {
   return (
-    <div className="bg-white dark:bg-black border rounded-lg border-black dark:border-zinc-800 shadow-[2px_2px_0] dark:shadow-zinc-800 pb-1">
-      <h3 className="p-2 mb-1 font-bold border-b border-dashed border-black dark:border-zinc-800 text-center">
+    <div className="bg-white dark:bg-black border rounded-lg border-black dark:border-zinc-300 shadow-[2px_2px_0] dark:shadow-zinc-300 pb-1">
+      <h3 className="p-2 mb-1 font-bold border-b border-dashed border-black dark:border-zinc-300 text-center">
         {table.name}
       </h3>
 

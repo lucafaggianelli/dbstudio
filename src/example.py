@@ -4,8 +4,8 @@
 # PYTHONPATH=$(pwd) uvicorn example:app_fa --app-dir src --port 8000 --reload
 # PYTHONPATH=$(pwd) uvicorn example:app_st --app-dir src --port 8000 --reload
 
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
+from sqlalchemy.orm import DeclarativeBase, Session
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.applications import Starlette
@@ -45,6 +45,20 @@ class Order(Base):
     billing_address_id = Column(Integer, ForeignKey("addresses.id"))
 
 
+engine = create_engine("sqlite:///dbstudio.db")
+Base.metadata.create_all(engine)
+
+with Session(engine) as session:
+    if session.query(User).count() == 0:
+        session.add_all(
+            [
+                User(name="wendy", fullname="Wendy Williams", nickname="windy"),
+                User(name="mary", fullname="Mary Contrary", nickname="mary"),
+                User(name="fred", fullname="Fred Flintstone", nickname="freddy"),
+            ]
+        )
+    session.commit()
+
 # FastAPI
 app_fa = FastAPI()
 
@@ -56,11 +70,11 @@ app_fa.add_middleware(
     allow_headers=["*"],
 )
 
-app_fa.mount("/dbstudio", get_fastapi_router(Base.metadata))
+app_fa.mount("/dbstudio", get_fastapi_router(engine))
 
 # Starlette
 app_st = Starlette(
-    routes=[get_startlette_mount(Base.metadata)],
+    routes=[get_startlette_mount(engine)],
     middleware=[
         Middleware(
             CORSMiddleware,

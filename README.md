@@ -5,6 +5,8 @@ A web-based database management tool that allows you to manage your databases, t
 It is designed to be embedded into your Python web applications, is currently compatible with FastAPI,
 Starlette, SQLAlchemy and SQLModel.
 
+[![DBStudio video](https://raw.githubusercontent.com/lucafaggianelli/dbstudio/main/docs/image.png)](https://www.canva.com/design/DAGQXfZhifY/U_A0qcdUC9A4AxgzkFD32Q/watch "DBStudio")
+
 ## Get started
 
 Install DB Studio from PyPI using pip or your favorite package manager:

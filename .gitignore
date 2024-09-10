@@ -164,3 +164,4 @@ cython_debug/
 /src/dbstudio/static/*
 
 .DS_Store
+*.db
