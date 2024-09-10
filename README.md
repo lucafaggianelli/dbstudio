@@ -27,7 +27,7 @@ import .models
 app = FastAPI()
 
 # The router must be mounted at /dbstudio
-app.mount("/dbstudio", get_fastapi_router(Base.metadata))
+app.mount("/dbstudio", get_fastapi_router(engine))
 ```
 
 ## Starlette
@@ -40,6 +40,6 @@ from dbstudio.starlette import get_startlette_mount
 import .models
 
 app = Starlette(
-    routes=[get_startlette_mount(Base.metadata)],
+    routes=[get_startlette_mount(engine)],
 )
 ```

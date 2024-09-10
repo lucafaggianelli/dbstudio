@@ -2,7 +2,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from pydantic.version import VERSION as pydantic_version
-from sqlalchemy import MetaData
+from sqlalchemy import Engine, MetaData
 from starlette.responses import JSONResponse
 from starlette.routing import Mount, Route
 from starlette.exceptions import HTTPException
@@ -56,7 +56,10 @@ class SPAStaticFiles(StaticFiles):
                 raise ex
 
 
-def get_startlette_mount(metadata: MetaData):
+def get_startlette_mount(engine: Engine):
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+
     is_pydantic_v1 = pydantic_version.startswith("1.")
 
     def api_route(request):
