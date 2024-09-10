@@ -56,7 +56,7 @@ app_fa.add_middleware(
     allow_headers=["*"],
 )
 
-app_fa.mount("/", get_fastapi_router(Base.metadata))
+app_fa.mount("/dbstudio", get_fastapi_router(Base.metadata))
 
 # Starlette
 app_st = Starlette(
